@@ -11,8 +11,8 @@
 
 namespace Seferov\AwsBundle\Services;
 
-use \Aws\Sdk as Aws;
-use \Seferov\AwsBundle\Entity\AWSCredentials;
+use Aws\Sdk as Aws;
+use Seferov\AwsBundle\Entity\AWSCredentials;
 
 /**
  * Factory class that initiates an AWS client.
@@ -22,7 +22,7 @@ class ServicesFactory
     /**
      * @var array
      */
-    public static $AVAILABLE_SERVICES = array(
+    public static $AVAILABLE_SERVICES = [
         'CloudFront',
         'CloudSearch',
         'CloudWatch',
@@ -55,14 +55,16 @@ class ServicesFactory
         'Sts',
         'StorageGateway',
         'Support',
-        'ElasticLoadBalancing'
-    );
+        'ElasticLoadBalancing',
+    ];
 
     /**
-     * @param  AWSCredentials            $AWSCredentials
+     * @param AWSCredentials $AWSCredentials
      * @param $service
-     * @return mixed
+     *
      * @throws \InvalidArgumentException
+     *
+     * @return mixed
      */
     public function get(AWSCredentials $AWSCredentials, $service)
     {

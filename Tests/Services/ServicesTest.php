@@ -11,8 +11,8 @@
 
 namespace Seferov\AwsBundle\Tests\Services;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Seferov\AwsBundle\Services\ServicesFactory;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * Tests for various services.
@@ -25,7 +25,7 @@ class ServicesTest extends WebTestCase
         $availableServices = ServicesFactory::$AVAILABLE_SERVICES;
 
         foreach ($availableServices as $service) {
-            $this->assertEquals("Aws\\".$service."\\".$service."Client", get_class($client->getContainer()->get('aws.' . strtolower($service))));
+            $this->assertEquals('Aws\\'.$service.'\\'.$service.'Client', get_class($client->getContainer()->get('aws.'.strtolower($service))));
         }
     }
 

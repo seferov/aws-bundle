@@ -10,12 +10,11 @@
 
 namespace Seferov\AwsBundle\Tests\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Seferov\AwsBundle\DependencyInjection\SeferovAwsExtension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Class SeferovAwsExtensionTest
- * @package Seferov\AwsBundle\Tests\DependencyInjection
+ * Class SeferovAwsExtensionTest.
  */
 class SeferovAwsExtensionTest extends \PHPUnit_Framework_TestCase
 {
@@ -32,24 +31,24 @@ class SeferovAwsExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * @var array
      */
-    private static $config = array(
-        array(
-            'credentials' => array(
-                'key' => 'SOME_KEY',
+    private static $config = [
+        [
+            'credentials' => [
+                'key'    => 'SOME_KEY',
                 'secret' => 'SOME_SECRET',
-            ),
-            'services' => array(
-                'sqs' => array(
-                    'region' => 'eu-west-1'
-                )
-            )
-        )
-    );
+            ],
+            'services' => [
+                'sqs' => [
+                    'region' => 'eu-west-1',
+                ],
+            ],
+        ],
+    ];
 
     /**
      * @var array
      */
-    private static $services = array('s3', 'sqs');
+    private static $services = ['s3', 'sqs'];
 
     /**
      * {@inheritdoc}
@@ -73,7 +72,7 @@ class SeferovAwsExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension->load(self::$config, $this->container);
 
         foreach (self::$services as $service) {
-           $this->assertTrue($this->container->hasDefinition('aws.'.$service));
+            $this->assertTrue($this->container->hasDefinition('aws.'.$service));
         }
     }
 }

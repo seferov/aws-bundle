@@ -17,7 +17,7 @@ namespace Seferov\AwsBundle\Services\Helper;
 class ServicesHelper
 {
     /**
-     * Converts camelcase strings into underscore ones
+     * Converts camelcase strings into underscore ones.
      *
      * @param string $string
      *

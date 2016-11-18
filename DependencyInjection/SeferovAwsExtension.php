@@ -11,16 +11,16 @@
 
 namespace Seferov\AwsBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader;
-use Seferov\AwsBundle\Services\ServicesFactory;
 use Seferov\AwsBundle\Services\Helper\ServicesHelper;
+use Seferov\AwsBundle\Services\ServicesFactory;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * SeferovAWSExtension
+ * SeferovAWSExtension.
  */
 class SeferovAwsExtension extends Extension
 {
@@ -29,7 +29,7 @@ class SeferovAwsExtension extends Extension
     /**
      * @var array
      */
-    public $configKeys = array('credentials', 'region', 'profile', 'version');
+    public $configKeys = ['credentials', 'region', 'profile', 'version'];
 
     /**
      * @param array            $configs
@@ -50,7 +50,7 @@ class SeferovAwsExtension extends Extension
         }
 
         // Base config
-        $baseConfig = array();
+        $baseConfig = [];
         foreach ($this->configKeys as $configKey) {
             if ($configKey === 'version') {
                 continue 1;
@@ -68,7 +68,7 @@ class SeferovAwsExtension extends Extension
                     }
                 }
             } else {
-                $config['services'][$serviceKey] = array_merge($baseConfig, array('version' => 'latest'));
+                $config['services'][$serviceKey] = array_merge($baseConfig, ['version' => 'latest']);
             }
 
             $container->setParameter(self::SERVICE_NAMESPACE.'.'.$serviceKey, $config['services'][$serviceKey]);

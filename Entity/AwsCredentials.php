@@ -21,7 +21,7 @@ class AwsCredentials
     /**
      * @var array
      */
-    private $parameters = array();
+    private $parameters = [];
 
     /**
      * @param array $parameters
@@ -40,7 +40,8 @@ class AwsCredentials
     }
 
     /**
-     * @param  null|string $service
+     * @param null|string $service
+     *
      * @return array
      */
     public function getParameters($service = null)
@@ -49,7 +50,6 @@ class AwsCredentials
 
         return $service
             ? $this->parameters[$serviceKey]
-            : array_intersect_key($this->parameters, array_flip(array('key', 'secret', 'region')))
-        ;
+            : array_intersect_key($this->parameters, array_flip(['key', 'secret', 'region']));
     }
 }
