@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of the SeferovAwsBundle package.
  *
@@ -15,7 +14,7 @@ use Aws\Sdk as Aws;
 use Seferov\AwsBundle\Entity\AWSCredentials;
 
 /**
- * Factory class that initiates an AWS client.
+ * Factory class that initiates an AWS client
  */
 class ServicesFactory
 {
@@ -55,7 +54,7 @@ class ServicesFactory
         'Sts',
         'StorageGateway',
         'Support',
-        'ElasticLoadBalancing',
+        'ElasticLoadBalancing'
     ];
 
     /**
@@ -63,13 +62,11 @@ class ServicesFactory
      * @param $service
      *
      * @throws \InvalidArgumentException
-     *
      * @return mixed
      */
     public function get(AWSCredentials $AWSCredentials, $service)
     {
         $aws = new Aws($AWSCredentials->getParameters());
-
         return $aws->createClient($service, $AWSCredentials->getParameters($service));
     }
 }
