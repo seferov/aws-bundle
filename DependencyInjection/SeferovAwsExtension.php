@@ -11,16 +11,16 @@
 
 namespace Seferov\AwsBundle\DependencyInjection;
 
-use Seferov\AwsBundle\Services\Helper\ServicesHelper;
-use Seferov\AwsBundle\Services\ServicesFactory;
-use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Loader;
+use Seferov\AwsBundle\Services\ServicesFactory;
+use Seferov\AwsBundle\Services\Helper\ServicesHelper;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * SeferovAWSExtension.
+ * SeferovAWSExtension
  */
 class SeferovAwsExtension extends Extension
 {
@@ -29,7 +29,7 @@ class SeferovAwsExtension extends Extension
     /**
      * @var array
      */
-    public $configKeys = ['credentials', 'region', 'profile', 'version', 'endpoint'];
+    public $configKeys = array('credentials', 'region', 'profile', 'version');
 
     /**
      * @param array            $configs
@@ -50,13 +50,15 @@ class SeferovAwsExtension extends Extension
         }
 
         // Base config
-        $baseConfig = [];
+        $baseConfig = array();
         foreach ($this->configKeys as $configKey) {
             if ($configKey === 'version') {
                 continue 1;
             }
             $baseConfig[$configKey] = array_key_exists($configKey, $config) && $config[$configKey] ? $config[$configKey] : null;
-            $container->setParameter(self::SERVICE_NAMESPACE.'.'.$configKey, $config[$configKey]);
+            if(isset($config[$configKey])) {
+                $container->setParameter(self::SERVICE_NAMESPACE . '.' . $configKey, $config[$configKey]);
+            }
         }
 
         foreach (ServicesFactory::$AVAILABLE_SERVICES as $service) {
@@ -68,10 +70,11 @@ class SeferovAwsExtension extends Extension
                     }
                 }
             } else {
-                $config['services'][$serviceKey] = array_merge($baseConfig, ['version' => 'latest']);
+                $config['services'][$serviceKey] = array_merge($baseConfig, array('version' => 'latest'));
             }
-
-            $container->setParameter(self::SERVICE_NAMESPACE.'.'.$serviceKey, $config['services'][$serviceKey]);
+            if(isset($config['services'][$serviceKey])) {
+                $container->setParameter(self::SERVICE_NAMESPACE . '.' . $serviceKey, $config['services'][$serviceKey]);
+            }
         }
     }
 }
