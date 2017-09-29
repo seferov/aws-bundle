@@ -55,6 +55,7 @@ seferov_aws:
                 secret: AWS_S3_SECRET
             region: AWS_S3_REGION
             version: '2006-03-01'
+			endpoint: 'http://192.168.99.100:9324'	// Optional for local debug with service mocks
     # ...
 ```
 
