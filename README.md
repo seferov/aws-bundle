@@ -1,7 +1,6 @@
 AWS Bundle
 ==========
 
-[![Coding Style](https://codingci.com/api/badge/seferov/awsBundle.svg)](https://codingci.com/repos/273)
 [![Build Status](https://travis-ci.org/seferov/awsBundle.svg?branch=master)](https://travis-ci.org/seferov/awsBundle)
 [![Test Coverage](https://codeclimate.com/github/seferov/awsBundle/badges/coverage.svg)](https://codeclimate.com/github/seferov/awsBundle/coverage)
 [![Code Climate](https://codeclimate.com/github/seferov/awsBundle/badges/gpa.svg)](https://codeclimate.com/github/seferov/awsBundle)
