@@ -48,7 +48,7 @@ class SeferovAwsExtensionTest extends TestCase
         $this->extension->load(array(
             array(
                 'credentials' => array(
-                    'key'    => 'SOME_KEY',
+                    'key' => 'SOME_KEY',
                     'secret' => 'SOME_SECRET',
                 ),
                 'services' => array(
@@ -57,7 +57,7 @@ class SeferovAwsExtensionTest extends TestCase
                     ),
                     'ses' => array(
                         'credentials' => array(
-                            'key'    => 'SES_KEY',
+                            'key' => 'SES_KEY',
                             'secret' => 'SES_SECRET',
                         ),
                     ),
@@ -65,7 +65,7 @@ class SeferovAwsExtensionTest extends TestCase
                         'version' => '2017-10-30',
                     ),
                 ),
-                'region' => 'eu-west-1'
+                'region' => 'eu-west-1',
             ),
         ), $this->container);
 

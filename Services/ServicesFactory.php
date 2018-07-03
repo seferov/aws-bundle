@@ -18,7 +18,7 @@ class ServicesFactory
      */
     public static function getAvailableServices()
     {
-        return [
+        return array(
             'ACMPCA',
             'Ecr',
             'MediaStoreData',
@@ -154,6 +154,6 @@ class ServicesFactory
             'DynamoDb',
             'MediaConvert',
             'XRay',
-        ];
+        );
     }
 }

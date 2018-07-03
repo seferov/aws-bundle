@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Seferov\AwsBundle\Services\ServicesFactory;
 
 /**
- * SeferovAWSExtension
+ * SeferovAWSExtension.
  */
 class SeferovAwsExtension extends Extension
 {
@@ -28,8 +28,9 @@ class SeferovAwsExtension extends Extension
     private $config;
 
     /**
-     * @param array $configs
+     * @param array            $configs
      * @param ContainerBuilder $container
+     *
      * @throws \Exception
      */
     public function load(array $configs, ContainerBuilder $container)
@@ -39,7 +40,7 @@ class SeferovAwsExtension extends Extension
 
         foreach (ServicesFactory::getAvailableServices() as $service) {
             $serviceKey = StringUtil::camelcaseToUnderscore($service);
-            $definition = new Definition('Aws\\'.$service.'\\'.$service.'Client', [$this->getConfig($serviceKey)]);
+            $definition = new Definition('Aws\\'.$service.'\\'.$service.'Client', array($this->getConfig($serviceKey)));
             $definition->setPublic(true);
             $container->setDefinition('aws.'.$serviceKey, $definition);
         }

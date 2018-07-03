@@ -17,6 +17,7 @@ class StringUtilTest extends TestCase
 {
     /**
      * @dataProvider camelcaseToUnderscoreData
+     *
      * @param $input
      * @param $result
      */

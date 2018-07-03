@@ -18,10 +18,10 @@ class Kernel extends BaseKernel
 {
     public function registerBundles()
     {
-        $bundles = [
+        $bundles = array(
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Seferov\AwsBundle\SeferovAwsBundle(),
-        ];
+        );
 
         return $bundles;
     }
