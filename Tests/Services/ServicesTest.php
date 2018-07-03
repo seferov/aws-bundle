@@ -23,13 +23,13 @@ class ServicesTest extends KernelTestCase
 {
     public function testAvailableServices()
     {
-        $kernel = static::bootKernel();
+        static::bootKernel();
         $availableServices = ServicesFactory::getAvailableServices();
 
         foreach ($availableServices as $service) {
             $this->assertSame(
                 'Aws\\'.$service.'\\'.$service.'Client',
-                get_class($kernel->getContainer()->get('aws.'.strtolower(StringUtil::camelcaseToUnderscore($service))))
+                get_class(static::$kernel->getContainer()->get('aws.'.strtolower(StringUtil::camelcaseToUnderscore($service))))
             );
         }
     }
@@ -39,9 +39,9 @@ class ServicesTest extends KernelTestCase
      */
     public function testNonExistentService()
     {
-        $kernel = static::bootKernel();
+        static::bootKernel();
 
-        $kernel->getContainer()->get('aws.nonexistentservice');
+        static::$kernel->getContainer()->get('aws.nonexistentservice');
     }
 
     public static function getKernelClass()
