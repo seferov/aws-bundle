@@ -9,12 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Seferov\AwsBundle\Services\Helper;
+namespace Seferov\AwsBundle\Util;
 
-/**
- * Services Helper.
- */
-class ServicesHelper
+class StringUtil
 {
     /**
      * Converts camelcase strings into underscore ones.

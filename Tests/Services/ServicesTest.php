@@ -12,20 +12,25 @@
 namespace Seferov\AwsBundle\Tests\Services;
 
 use Seferov\AwsBundle\Services\ServicesFactory;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Seferov\AwsBundle\Tests\app\Kernel;
+use Seferov\AwsBundle\Util\StringUtil;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * Tests for various services.
  */
-class ServicesTest extends WebTestCase
+class ServicesTest extends KernelTestCase
 {
     public function testAvailableServices()
     {
-        $client = static::createClient();
-        $availableServices = ServicesFactory::$AVAILABLE_SERVICES;
+        $kernel = static::bootKernel();
+        $availableServices = ServicesFactory::getAvailableServices();
 
         foreach ($availableServices as $service) {
-            $this->assertEquals('Aws\\'.$service.'\\'.$service.'Client', get_class($client->getContainer()->get('aws.'.strtolower($service))));
+            $this->assertSame(
+                'Aws\\'.$service.'\\'.$service.'Client',
+                get_class($kernel->getContainer()->get('aws.'.strtolower(StringUtil::camelcaseToUnderscore($service))))
+            );
         }
     }
 
@@ -34,8 +39,13 @@ class ServicesTest extends WebTestCase
      */
     public function testNonExistentService()
     {
-        $client = static::createClient();
+        $kernel = static::bootKernel();
 
-        $client->getContainer()->get('aws.nonexistentservice');
+        $kernel->getContainer()->get('aws.nonexistentservice');
+    }
+
+    public static function getKernelClass()
+    {
+        return Kernel::class;
     }
 }

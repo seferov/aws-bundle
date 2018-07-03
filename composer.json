@@ -14,10 +14,9 @@
             "homepage": "https://github.com/seferov/awsBundle/graphs/contributors"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.5",
-        "symfony/symfony": "~2.3|~3.0|~4.0",
+        "symfony/framework-bundle": "~2.3|~3.0|~4.0",
         "aws/aws-sdk-php": "^3.19"
     },
     "require-dev": {

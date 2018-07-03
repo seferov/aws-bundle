@@ -9,16 +9,18 @@
  * file that was distributed with this source code.
  */
 
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\HttpKernel\Kernel;
+namespace Seferov\AwsBundle\Tests\app;
 
-class AppKernel extends Kernel
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+
+class Kernel extends BaseKernel
 {
     public function registerBundles()
     {
         $bundles = [
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Seferov\AwsBundle\SeferovAwsBundle(),
+            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new \Seferov\AwsBundle\SeferovAwsBundle(),
         ];
 
         return $bundles;
